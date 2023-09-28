@@ -37,7 +37,7 @@ if __name__ == '__main__':
         desired_num_samples = len(mnist_train) // 2
 
         # Use torch.utils.data.random_split to split the dataset into two halves
-        dataset_train, half2 = torch.utils.data.random_split(mnist_train, [desired_num_samples, len(mnist_dataset) - desired_num_samples])
+        dataset_train, half2 = torch.utils.data.random_split(mnist_train, [desired_num_samples, len(mnist_train) - desired_num_samples])
 
         # Now, 'half1' and 'half2' are custom datasets, each containing half of the MNIST dataset
         #dataset_train = list(mnist_dataset)[:30000]
