@@ -29,15 +29,14 @@ if __name__ == '__main__':
 
     # load dataset and split users
     if args.dataset == 'mnist':
-        #trans_mnist = transforms.Compose([transforms.RandomAffine(degrees=20, translate=(0.1,0.1), scale=(0.9, 1.1)),
-                    #transforms.ColorJitter(brightness=0.2, contrast=0.2),transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
+        
         trans_mnist = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
-        mnist_train = datasets.MNIST('../data/mnist/', train=True, download=True, transform=trans_mnist)
+        dataset_train = datasets.MNIST('../data/mnist/', train=True, download=True, transform=trans_mnist)
         # Calculate the number of samples you want (e.g., half of the dataset)
-        desired_num_samples = len(mnist_train) // 2
+        # desired_num_samples = len(mnist_train) // 2
 
-        # Use torch.utils.data.random_split to split the dataset into two halves
-        dataset_train, half2 = torch.utils.data.random_split(mnist_train, [desired_num_samples, len(mnist_train) - desired_num_samples])
+        # # Use torch.utils.data.random_split to split the dataset into two halves
+        # dataset_train, half2 = torch.utils.data.random_split(mnist_train, [desired_num_samples, len(mnist_train) - desired_num_samples])
 
         # Now, 'half1' and 'half2' are custom datasets, each containing half of the MNIST dataset
         #dataset_train = list(mnist_dataset)[:30000]
