@@ -26,7 +26,7 @@ def test_img(net_g, datatest, args):
         # get the index of the max log-probability
         y_pred = log_probs.data.max(1, keepdim=True)[1]
         correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
-    wandb.log({'Correct': correct})
+    #wandb.log({'Correct': correct})
 
     test_loss /= len(data_loader.dataset)
     accuracy = 100.00 * correct / len(data_loader.dataset)
