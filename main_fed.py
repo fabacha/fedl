@@ -32,7 +32,7 @@ if __name__ == '__main__':
     if args.dataset == 'mnist':
         trans_mnist = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
         mnist_train = datasets.MNIST('../data/mnist/', train=True, download=True, transform=trans_mnist)
-        subset_size = 60000
+        subset_size = 30000
         subset_indices = torch.randperm(len(mnist_train))[:subset_size]
         dataset_train =Subset(mnist_train, subset_indices)
         dataset_train.train_labels =torch.tensor([dataset_train.dataset.targets[i] for i in subset_indices])
