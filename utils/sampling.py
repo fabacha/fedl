@@ -30,7 +30,7 @@ def mnist_iid(dataset, num_users):
 
 trans_mnist = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
 mnist_train = datasets.MNIST('../data/mnist/', train=True, download=True, transform=trans_mnist)
-subset_size = 60000
+subset_size = 30000
 subset_indices = torch.randperm(len(mnist_train))[:subset_size]
 dataset_train = Subset(mnist_train, subset_indices)
 
@@ -45,7 +45,7 @@ def mnist_noniid(dataset_train, num_users):
     #dataset_train.train_labels = torch.tensor([dataset_train.dataset.targets[i] for i in subset_indices])
     #dataset_test = datasets.MNIST('../data/mnist/', train=False, download=True, transform=trans_mnist)
     # sample users
-    num_shards, num_imgs = 300, 200
+    num_shards, num_imgs = 300, 100
     idx_shard = [i for i in range(num_shards)]
     dict_users = {i: np.array([], dtype='int64') for i in range(num_users)}
     idxs = np.arange(num_shards*num_imgs)
