@@ -110,6 +110,7 @@ if __name__ == '__main__':
         print('Round {:3d}, Average loss {:.3f}'.format(iter, loss_avg))
         loss_train.append(loss_avg)
 
+    torch.save(net_glob.state_dict(), 'global_model.pth')
     # plot loss curve
     plt.figure()
     plt.plot(range(len(loss_train)), loss_train)
